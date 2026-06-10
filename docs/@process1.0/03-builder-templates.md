@@ -1,6 +1,6 @@
-# Building Patterns
+# Builder Templates
 
-These patterns can be copied into real processes and adapted around the `process@1.0` read model.
+These templates can be copied into real processes and adapted around the `process@1.0` read model.
 
 ## Token State
 
@@ -176,27 +176,29 @@ Use cases:
 
 ## Web Serving
 
-Some HyperBEAM workflows can serve HTML, CSS, or JavaScript directly from process state. Treat this as experimental unless the target node and runtime advertise production support.
+Some HyperBEAM workflows can serve HTML, CSS, or JavaScript from process data. Prefer publishing the content through the [`patch@1.0` device]() and reading it from a `compute` endpoint. Raw state requests through `now` can be finicky across nodes and runtimes.
 
-Minimal state shape:
+Minimal patched HTML:
 
 ```lua
-State = State or {}
-
-State["content-type"] = "text/html"
-State["body"] = [[
+WebPage = [[
 <!doctype html>
 <html>
   <head><title>AO Process Page</title></head>
   <body><h1>Hello from process state</h1></body>
 </html>
 ]]
+
+Send({
+  device = "patch@1.0",
+  web = WebPage
+})
 ```
 
 Read path:
 
 ```text
-http://localhost:8734/<process-id>~process@1.0/now
+https://<hyperbeam-node>/<process-id>~process@1.0/compute/web
 ```
 
-Use this as an advanced or experimental pattern until the deployment environment is pinned.
+For multi-file experiences, patch separate keys such as `html`, `css`, and `js`, or store larger assets on Arweave and patch an index of asset IDs.

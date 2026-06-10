@@ -81,15 +81,7 @@ const balances = await fetch(
 const balance = balances[address] || "0";
 ```
 
-## Step 5: Use Dynamic Reads For Aggregates
-
-If the client used dry-runs to compute totals, rankings, filtered views, or derived state, move the computation into a Lua dynamic read:
-
-```text
-/<process-id>~process@1.0/now/~lua@5.3a&module=<script-tx-id>/<function>/serialize~json@1.0
-```
-
-## Step 6: Update Tags
+## Step 5: Update Tags
 
 Audit handlers that rely on exact mixed-case tag names. Prefer:
 
@@ -110,5 +102,4 @@ Avoid relying on names like `ExampleTag` when casing normalization could affect 
 - Public state is patched with lowercase keys.
 - Mutating handlers patch after successful state changes.
 - Client reads use `process@1.0/compute`.
-- Aggregates use dynamic reads.
 - Use `--legacy` only for existing Legacynet processes.

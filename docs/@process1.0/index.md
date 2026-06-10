@@ -19,7 +19,6 @@ Common operations:
 - `push`: send a signed message into a process.
 - `compute/<key>`: read the last exposed value for a patched key.
 - `now/<key>`: read from the most current process state path.
-- `now/~lua@5.3a&module=<tx-id>/<function>/serialize~json@1.0`: run a dynamic Lua read over process state.
 
 ## Node Selection
 
@@ -30,7 +29,7 @@ For real use, select a current HyperBEAM node from `https://lunar.arweave.net` o
 ## Section Order
 
 1. Start with the `process@1.0` and processes intro.
-2. Use state exposure and dynamic reads for fast reads.
+2. Use state exposure for fast reads.
 3. Build practical patterns on top.
 4. Use AO Connect mainnet APIs for JavaScript clients.
 5. Keep AOS/Lua basics close by.
