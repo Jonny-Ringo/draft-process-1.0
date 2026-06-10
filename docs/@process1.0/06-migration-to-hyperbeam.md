@@ -20,7 +20,7 @@ The process still mutates state through messages. The difference is that read-fa
 aos --url https://<hyperbeam-node>
 ```
 
-The node URL is a deployment choice. Pick a current node from `https://lunat.arweave.net` or another marketplace/listing source.
+The node URL is a deployment choice. Pick a current node from `https://lunar.arweave.net` or another marketplace/listing source.
 
 ## Step 2: Add Initial Patches
 

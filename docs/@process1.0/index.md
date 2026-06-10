@@ -25,21 +25,20 @@ Common operations:
 
 Examples in this section may use `https://push.forward.computer`. Treat it only as an example node.
 
-For real use, select a current HyperBEAM node from `https://lunat.arweave.net` or another marketplace/listing source. Use the selected node's URL for `--url`, `URL`, and read endpoints. Use that node's advertised authority address when a workflow asks for `authority` or `HYPERBEAM_AUTHORITY`.
+For real use, select a current HyperBEAM node from `https://lunar.arweave.net` or another marketplace/listing source. Use the selected node's URL for `--url`, `URL`, and read endpoints. Use that node's advertised authority address when a workflow asks for `authority` or `HYPERBEAM_AUTHORITY`.
 
 ## Section Order
 
 1. Start with the `process@1.0` and processes intro.
-2. Learn the process/message/handler model.
-3. Use state exposure and dynamic reads for fast reads.
-4. Build practical patterns on top.
-5. Use AO Connect mainnet APIs for JavaScript clients.
-6. Keep AOS/Lua basics close by.
-7. Use the migration guide for older processes.
-8. Keep Legacynet-only material in the final appendix.
+2. Use state exposure and dynamic reads for fast reads.
+3. Build practical patterns on top.
+4. Use AO Connect mainnet APIs for JavaScript clients.
+5. Keep AOS/Lua basics close by.
+6. Use the migration guide for older processes.
+7. Keep Legacynet-only material in the final appendix.
 
 ## Scope
 
 This section focuses on the English technical core for `process@1.0`: process creation, messages, state exposure, reads, AO Connect, and migration.
 
-Legacynet-specific items are separate from the main flow. They live in [90. Legacynet Appendix](90-legacynet-appendix.md).
+Legacynet-specific items are separate from the main flow. They live in [07. Legacynet Appendix](07-legacynet-appendix.md).

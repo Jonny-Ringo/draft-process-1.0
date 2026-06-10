@@ -6,6 +6,41 @@ A process is a deterministic log of state transitions stored on Arweave. Message
 
 Use this page to create a process, load a small counter, send it a message, and read exposed state through the `process@1.0` device.
 
+## Process Model
+
+- A process is the running stateful instance.
+- A module is the code used to initialize or execute the process.
+- A message is a signed ANS-104 data item addressed to a process.
+- A handler matches messages and runs process logic.
+- The inbox keeps unhandled messages.
+- `ao.id` is the current process ID inside AOS.
+- `Send` sends outbound messages.
+- `ao.spawn` can create a new process from a module.
+
+## Message Shape
+
+Messages include data, target, sender, tags, signatures, and scheduling metadata. The core fields a handler usually reads are:
+
+```lua
+msg.From
+msg.Target
+msg.Data
+```
+
+`msg.Data` can be empty, but it is the right place for larger payloads. Tags can carry routing and metadata such as `Action`, `Amount`, or `Recipient`.
+
+ANS-104 tag limits:
+
+- Up to 128 tags per message.
+- Tag key/name: up to 1024 bytes.
+- Tag value: up to 3072 bytes.
+
+Keep tag values as strings unless a process explicitly documents otherwise.
+
+## Process Authorities
+
+For process-to-process messages to be accepted, the recipient process must trust the authority used by the incoming message. In practice, processes that talk to each other should use the same HyperBEAM authority or compatible authority sets. If the recipient does not have the authority, it can reject the message.
+
 ## Prerequisites
 
 - Node.js 20 or newer.
@@ -60,6 +95,8 @@ Alternatively, save the code below to an `example.lua` file and load it with:
 ```
 
 Note: The [`patch@1.0` device]() pushes selected process data to HyperBEAM endpoints so clients can discover and fetch it. In this example, the `counter`, `lastupdate`, and `updatedby` keys become readable through the process endpoint.
+
+The code below registers an `Increment` handler. A handler has a name, a matcher, and a function that runs when the matcher succeeds.
 
 ```lua
 Counter = Counter or 0

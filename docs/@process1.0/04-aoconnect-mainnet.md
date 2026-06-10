@@ -18,7 +18,7 @@ import fs from "node:fs";
 
 const jwk = JSON.parse(fs.readFileSync("wallet.json", "utf-8"));
 
-// Example only. Pick a current node from https://lunat.arweave.net
+// Example only. Pick a current node from https://lunar.arweave.net
 // or another marketplace/listing source.
 const HYPERBEAM_URL = "https://<hyperbeam-node>";
 
