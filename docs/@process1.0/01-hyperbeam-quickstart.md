@@ -37,7 +37,19 @@ aos --wallet ./wallet.json --url https://<hyperbeam-node>
 
 ## Create A Counter
 
-Paste this into the AOS prompt, or save it to an `example.lua` file and load it with:
+To paste multiline Lua into the AOS prompt, open the inline editor first:
+
+```lua
+.editor
+```
+
+Paste the counter code below into the editor, then type this on its own line to exit the editor and execute the code:
+
+```lua
+.done
+```
+
+Alternatively, save the code below to an `example.lua` file and load it with:
 
 ```lua
 .load path/to/example.lua
