@@ -15,24 +15,24 @@ Use this page to create a process, send it a message, and read exposed state thr
 npm i -g https://get_ao.arweave.net
 ```
 
-## Connect To HyperBEAM
+## Create a Process
 
 ```sh
-aos --url https://<hyperbeam-node>
+aos process_name --url https://<hyperbeam-node>
 ```
 
 Example:
 
 ```sh
-aos --url https://push.forward.computer
+aos counter --url https://push.forward.computer
 ```
 
-If you omit `--url https://node.url`, the current AOS mainnet release defaults to a HyperBEAM node like push.forward.computer. Passing `--url https://node.url` keeps the selected node explicit as the executor of the process.
+Replace `process_name` with a friendly local name for the process, such as `counter`. Reuse the same `aos process_name --url https://node.url` command to re-enter the process console after exiting. If you omit `--url https://node.url`, the current AOS mainnet release defaults to a HyperBEAM node like `push.forward.computer`. Passing `--url https://node.url` keeps the selected node explicit as the executor of the process.
 
 To use a specific wallet:
 
 ```sh
-aos --wallet ./wallet.json --url https://<hyperbeam-node>
+aos process_name --wallet ./wallet.json --url https://<hyperbeam-node>
 ```
 
 ## Create A Counter
