@@ -22,12 +22,16 @@ const jwk = JSON.parse(fs.readFileSync("wallet.json", "utf-8"));
 // or another marketplace/listing source.
 const HYPERBEAM_URL = "http://localhost:8734";
 
-// Use the authority address advertised by your selected node.
-const HYPERBEAM_AUTHORITY = "<hyperbeam-node-authority>";
+// The node address belongs to the selected node URL.
+// For a local node, this comes from:
+// curl "http://localhost:8734/~meta@1.0/info/address"
+const HYPERBEAM_NODE_ADDRESS = "your_local_node_address";
 
-// Default scheduler from the mainnet release notes.
-const HYPERBEAM_SCHEDULER =
-  "your_local_node_address";
+// Scheduler and authority addresses match the selected node.
+const HYPERBEAM_SCHEDULER = HYPERBEAM_NODE_ADDRESS;
+
+// List every node authority this process should trust.
+const HYPERBEAM_AUTHORITIES = [HYPERBEAM_NODE_ADDRESS];
 
 // Current AOS module from the mainnet release notes.
 const AOS_MODULE = "ISShJH1ij-hPPt9St5UFFr_8Ys3Kj5cyg7zrMGt7H9s";
@@ -46,11 +50,13 @@ You can retrieve a node's authority address from its metadata endpoint:
 curl "http://localhost:8734/~meta@1.0/info/address"
 ```
 
+Use the returned address for that node's scheduler and authority values. If the process should trust more than one node, add each node address to `HYPERBEAM_AUTHORITIES`.
+
 ## Spawn
 
 ```js
 const process = await ao.spawn({
-  authority: HYPERBEAM_AUTHORITY,
+  authority: HYPERBEAM_AUTHORITIES,
   module: AOS_MODULE,
   data: "1984",
   tags: [{ name: "Example-Tag", value: "Example Value" }],
